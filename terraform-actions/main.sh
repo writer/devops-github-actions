@@ -13,6 +13,7 @@ workingDir="$2"
 function main {
   command="$1"
   scriptDir=$(dirname ${0})
+  source ${scriptDir}/destroy.sh
   source ${scriptDir}/apply.sh
   source ${scriptDir}/fmt.sh
   source ${scriptDir}/init.sh
@@ -20,6 +21,9 @@ function main {
   source ${scriptDir}/validate.sh
 
   case "${command}" in
+    destroy)
+      terraformDestroy
+      ;;
     apply)
       terraformApply
       ;;
